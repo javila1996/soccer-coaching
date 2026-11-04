@@ -3,98 +3,141 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Thunder U11 Avila – Availability reply</title>
+<title>Thunder Thanksgiving Dinner | RSVP</title>
+<meta name="description" content="RSVP for the Thunder U11 Avila and U19 Avila Thanksgiving dinner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
-<style>
-:root{--bg:#f5f6f8;--surface:#fff;--ink:#14213d;--mute:#5b6478;--line:#d9dde6;--out:#c0392b;--outbg:#fbe4e1;--ok:#1f7a4d;--okbg:#e3f3ea;--acc:#ffc400;--accink:#14213d;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1526;--surface:#16213a;--ink:#eef1f7;--mute:#9aa5bd;--line:#2a3857;--out:#ff8a7a;--outbg:#4a2326;--ok:#5fd39a;--okbg:#17382d}}
-:root[data-theme="dark"]{--bg:#0d1526;--surface:#16213a;--ink:#eef1f7;--mute:#9aa5bd;--line:#2a3857;--out:#ff8a7a;--outbg:#4a2326;--ok:#5fd39a;--okbg:#17382d}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 Barlow,system-ui,-apple-system,Segoe UI,sans-serif}
-main{max-width:520px;margin:0 auto;padding:18px 14px 40px}
-h1{font:700 30px/1 "Barlow Condensed",Impact,sans-serif;margin:0 0 6px}
-h1 span{background:var(--acc);color:var(--accink);padding:0 8px;border-radius:3px;margin-right:6px}
-h2{font:700 20px/1.1 "Barlow Condensed",sans-serif;margin:22px 0 8px}
-p{margin:0 0 8px;color:var(--mute)}
-.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.chip,.game{font:600 16px Barlow,sans-serif;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:10px;cursor:pointer}
-.chip{padding:12px 4px}
-.chip[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--accink)}
-.game{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 14px;margin-bottom:8px;text-align:left;background:var(--okbg);border-color:var(--ok)}
-.game small{display:block;font-weight:500;color:var(--mute)}
-.game .tag{font-weight:700;color:var(--ok);white-space:nowrap;margin-left:10px}
-.game[aria-pressed="true"]{background:var(--outbg);border-color:var(--out)}
-.game[aria-pressed="true"] .tag{color:var(--out)}
-button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.reply{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:17px;color:var(--ink);min-height:54px}
-.bar{display:flex;gap:8px;margin-top:10px}
-.btn{flex:1;font:700 16px Barlow,sans-serif;padding:13px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-align:center;text-decoration:none}
-.btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}
-.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
-#msg{min-height:20px;margin-top:8px;color:var(--ok);font-weight:600}
-</style>
+<link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
+
+<header class="hero">
+  <div class="hero-in">
+    <p class="eyebrow">Thunder U11 Avila &amp; U19 Avila</p>
+    <h1>Thanksgiving <span>Dinner</span></h1>
+    <p class="lead">Join the team and your families for a night of food and thanks. Please RSVP once for each player.</p>
+    <dl class="details" id="details" hidden></dl>
+    <a class="cta" href="#rsvp">RSVP now</a>
+  </div>
+</header>
+
 <main>
-<h1><span>Thunder</span>U11 Avila</h1>
-<p>Indoor season availability. This takes about 20 seconds, and no account is needed.</p>
+  <div class="banner" id="banner" role="status" hidden></div>
 
-<h2>1. Who is your player?</h2>
-<div class="chips" id="chips"></div>
+  <section class="panel" id="rsvp" aria-labelledby="rsvp-h">
+    <h2 id="rsvp-h">RSVP</h2>
 
-<h2>2. Tap any game they will miss</h2>
-<p>Games are marked available unless you tap them.</p>
-<div id="games"></div>
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="team">Team</label>
+        <select id="team" required>
+          <option value="">Select a team</option>
+          <option value="u11">Thunder U11 Avila</option>
+          <option value="u19">Thunder U19 Avila</option>
+        </select>
+      </div>
 
-<h2>3. Send your reply to the coach</h2>
-<div class="reply" id="reply">Pick your player first.</div>
-<div class="bar">
-<a class="btn p" id="sms" aria-disabled="true" href="#">Send by text</a>
-<button class="btn" id="cp" aria-disabled="true">Copy reply</button>
-</div>
-<div id="msg" role="status"></div>
+      <div class="field">
+        <label for="player">Player</label>
+        <select id="player" required disabled>
+          <option value="">Select a team first</option>
+        </select>
+        <p class="warn" id="taken" role="alert" hidden>
+          Someone has already submitted an entry for this player. If it needs to be edited, please contact Coach Josue.
+        </p>
+      </div>
+
+      <fieldset class="field">
+        <legend>Will your player be there?</legend>
+        <div class="seg">
+          <input type="radio" name="status" id="yes" value="yes" checked>
+          <label for="yes">Yes, we’ll be there</label>
+          <input type="radio" name="status" id="no" value="no">
+          <label for="no">Can’t make it</label>
+        </div>
+      </fieldset>
+
+      <div class="field" id="extra-box">
+        <label for="extra">Additional people coming</label>
+        <p class="hint">Count everyone besides the player: parents, siblings, grandparents.</p>
+        <div class="stepper">
+          <button type="button" id="minus" aria-label="One fewer">−</button>
+          <input type="number" id="extra" min="0" max="20" value="0" inputmode="numeric">
+          <button type="button" id="plus" aria-label="One more">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="note">Note for the coach <span class="opt">(optional)</span></label>
+        <input type="text" id="note" maxlength="200" placeholder="Anything we should know?">
+      </div>
+
+      <button class="submit" id="submit" type="submit">Submit RSVP</button>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <h3 id="done-h"></h3>
+      <p id="done-p"></p>
+      <button class="ghost" id="another" type="button">RSVP for another player</button>
+    </div>
+  </section>
+
+  <section class="panel" id="coach" aria-labelledby="coach-h" hidden>
+    <div class="coach-head">
+      <h2 id="coach-h">Coach view</h2>
+      <div>
+        <button class="ghost sm" id="refresh" type="button" hidden>Refresh</button>
+        <button class="ghost sm" id="logout" type="button" hidden>Log out</button>
+      </div>
+    </div>
+
+    <form id="login" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="pw">Password</label>
+        <input type="password" id="pw" autocomplete="current-password" required>
+      </div>
+      <button class="submit" type="submit">Log in</button>
+      <p class="msg" id="login-msg" role="status"></p>
+    </form>
+
+    <div id="dash" hidden></div>
+  </section>
 </main>
-<script>
-var PLAYERS=["Chris","Tommy","Harvey","Kalyan","Jose","Khuslen","Troy","Ari","Fabian","Michael","Grey","Judah","Brewer","Carson"];
-var GAMES=[
-{d:"Fri, Nov 6",t:"7:50 PM",o:"City SC JK 2"},
-{d:"Sat, Nov 14",t:"8:20 AM",o:"LFC 2 U12"},
-{d:"Sat, Nov 21",t:"3:00 PM",o:"LaRoca U12 B Harvest"},
-{d:"Sat, Nov 28",t:"10:50 AM",o:"LFC 1 U12"},
-{d:"Sat, Dec 5",t:"8:00 PM",o:"Sparta United"},
-{d:"Sat, Jan 2",t:"1:20 PM",o:"Hegland U11/U12"},
-{d:"Sat, Jan 9",t:"2:10 PM",o:"City SC JK 1"}];
-var who=null,miss={};
-function short(g){return g.d.replace(/^\w+, /,"");}
-function text(){
-if(!who)return "";
-var m=GAMES.filter(function(g,i){return miss[i];}).map(short);
-return "Thunder U11 Avila: "+who+" "+(m.length?"will miss "+m.join(", ")+".":"is available for all games.");}
-function render(){
-document.getElementById('chips').innerHTML=PLAYERS.map(function(p){return '<button class="chip" aria-pressed="'+(p===who)+'" data-p="'+p+'">'+p+'</button>';}).join('');
-document.getElementById('games').innerHTML=GAMES.map(function(g,i){var o=!!miss[i];
-return '<button class="game" aria-pressed="'+o+'" data-g="'+i+'"><span>'+g.d+' · '+g.t+'<small>vs '+g.o+'</small></span><span class="tag">'+(o?'Will miss':'Available')+'</span></button>';}).join('');
-var t=text(),ok=!!who;
-document.getElementById('reply').textContent=ok?t:"Pick your player first.";
-var s=document.getElementById('sms'),c=document.getElementById('cp');
-s.setAttribute('aria-disabled',ok?'false':'true');c.setAttribute('aria-disabled',ok?'false':'true');
-s.href=ok?'sms:?&body='+encodeURIComponent(t):'#';
-}
-document.addEventListener('click',function(e){
-var b=e.target.closest('button');if(!b)return;
-if(b.dataset.p){who=b.dataset.p;document.getElementById('msg').textContent='';render();}
-else if(b.dataset.g){miss[b.dataset.g]=!miss[b.dataset.g];render();}
-});
-document.getElementById('sms').addEventListener('click',function(e){if(!who)e.preventDefault();});
-document.getElementById('cp').addEventListener('click',function(){
-if(!who)return;var t=text(),m=document.getElementById('msg');
-function ok(){m.textContent='Copied. Paste it into your message to the coach.';}
-function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(x){m.textContent='Copy failed. Press and hold the reply above to copy it.';}document.body.removeChild(a);}
-try{navigator.clipboard.writeText(t).then(ok,fb);}catch(x){fb();}
-});
-render();
-</script>
+
+<footer>
+  <p>Thunder U11 Avila &amp; U19 Avila</p>
+  <button class="link" id="coach-link" type="button">Coach login</button>
+</footer>
+
+<dialog id="edit">
+  <form method="dialog" id="edit-form">
+    <h3 id="edit-h">Edit RSVP</h3>
+    <div class="field">
+      <label for="e-status">Status</label>
+      <select id="e-status"><option value="yes">Coming</option><option value="no">Can’t make it</option></select>
+    </div>
+    <div class="field">
+      <label for="e-extra">Additional people</label>
+      <input type="number" id="e-extra" min="0" max="20">
+    </div>
+    <div class="field">
+      <label for="e-note">Note</label>
+      <input type="text" id="e-note" maxlength="200">
+    </div>
+    <div class="row">
+      <button class="submit" id="e-save" type="button">Save</button>
+      <button class="ghost" value="cancel">Cancel</button>
+    </div>
+    <p class="msg" id="e-msg"></p>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/scripts/app.js"></script>
 </body>
 </html>
