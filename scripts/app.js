@@ -6,8 +6,8 @@
    - EVENT: fill in what you know. Empty lines stay hidden.
    =========================================================== */
 const CONFIG = {
-  SUPABASE_URL: "PASTE_YOUR_SUPABASE_URL",
-  SUPABASE_ANON_KEY: "PASTE_YOUR_SUPABASE_ANON_KEY",
+  SUPABASE_URL: "https://atwlllkelhvoumhuihyn.supabase.co/rest/v1/",
+  SUPABASE_ANON_KEY: "sb_publishable_SmCVeJ_k6nzZGpV1fQPccw_zn9XwJnn",
   EVENT: { date: "", time: "", place: "" }
 };
 
