@@ -168,8 +168,7 @@ $("logout").addEventListener("click", async () => { await sb.auth.signOut(); row
 
 $("login").addEventListener("submit", async (e) => {
   e.preventDefault();
-  if (!sb) return say($("login-msg"), "Not connected yet.", "e");
-  say($("login-msg"), "Signing in…");
+  if (error) return say($("login-msg"), "Login failed: " + error.message, "e");
   const { error } = await sb.auth.signInWithPassword({ email: $("email").value.trim(), password: $("pw").value });
   if (error) return say($("login-msg"), "That email or password did not work.", "e");
   $("pw").value = ""; say($("login-msg"), "");
