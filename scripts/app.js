@@ -6,7 +6,7 @@
    - EVENT: fill in what you know. Empty lines stay hidden.
    =========================================================== */
 const CONFIG = {
-  SUPABASE_URL: "https://atwlllkelhvoumhuihyn.supabase.co/rest/v1/",
+  SUPABASE_URL: "https://atwlllkelhvoumhuihyn.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_SmCVeJ_k6nzZGpV1fQPccw_zn9XwJnn",
   EVENT: { date: "Nov 19 2026", time: "6:30 pm", place: "TBD" }
 };
