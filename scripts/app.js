@@ -8,7 +8,7 @@
 const CONFIG = {
   SUPABASE_URL: "https://atwlllkelhvoumhuihyn.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_SmCVeJ_k6nzZGpV1fQPccw_zn9XwJnn",
-  EVENT: { date: "Nov 19 2026", time: "6:30 pm", place: "TBD" }
+  EVENT: { date: "Nov 19 2026", time: "6:30 pm", place: "TBD - In Saratoga" }
 };
 
 /* ===========================================================
