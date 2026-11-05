@@ -102,4 +102,9 @@ dialog::backdrop{background:rgba(10,17,31,.6)}
 .row{display:flex;gap:10px}
 .row .submit{flex:1}
 
+/* Hide the browser's built-in up/down arrows on the additional people box */
+.stepper input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.stepper input[type=number]::-webkit-outer-spin-button,
+.stepper input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
